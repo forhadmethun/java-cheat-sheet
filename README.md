@@ -147,28 +147,100 @@ cat  = kitty;
 ### Assignment Operator
 ##### basic examples
 ``` 
-    
+    int a = 5;
+    int b = a; 
+    b = 10;// doesn't change value of a
 ```
 ##### basic puzzles
+``` 
+    Person firstPerson = new Person();
+    firstPerson.setName("Me");
+    
+    Person secondPerson = firstPerson;
+    secondPerson.setName("We"); // changes value of firstPerson
+```
+
+### Casting - Implicit and Explicit
+ Conversion of one data type to another.
+ - int is by default int
+ - float is by default double 
+ ``` 
+ 
+ ```
+##### Implicit Casting
+- directly done by compiler
+``` 
+    byte b= 5; //byte b = (int) 10; 
+    int value = 100;
+    long number = value;//implicit casting 
+    float f = 100;//implicit casting 
+```
+##### Explicit Casting
+- Programmer need to cast 
+``` 
+long longNumber = 256784;
+int intNumber = (int) longNumber; 
+
+int x = (int) 35.35; 
+
+
+//float avg = 2.4;//COMPILER ERROR as by default double!!
+float avg = (float)2.4; 
+float pi = 3.1516f;//F is also fine;
+
+```
+
+### Operator
+##### Assignment 
+ - +=, -=, *=
+##### Remainder
+ - %
+##### Conditional
+- Ternary Operator 
+    - booleanCondition ? ResultIfTrue : ResultIfFalse
+    
+###Passing Variable to Methods 
+ - all variable, primitives and references can be passed as a parameter
+ - primitive variables don't modify value in method but reference variables do
+ - null is a valid return for Object, void cannot return anything
+###Types of Variables
+ - Instance Variable
+    - declared inside a class & outside any method
+    - called member value, field, property
+ - Local Variables
+    - declared inside method
+    - if name is same as an instance variable it results shadowing 
+ - Member Variables
+    - defined at class level without static keyword
+ - Static Variables 
+    - defined at class level with static keyword
+    - can be accessed through a) Class Name b) Object Reference(not recommended) 
+    Example - 
+``` 
+
+``` 
+
+###Scope of Variable
+- static variable can be accessed anywhere 
+- member variable can be used any non-static method
+- local variable can be used only it's scope
+- block variable {} can be used only in the block  
+Example - 
 ``` 
 
 ```
 
-### Casting - Implicit and Explicit
-##### Implicit Casting
-##### Explicit Casting
-
-### Operator
-##### Assignent
-##### Remainder
-##### Conditional
-###Passing Variable to Methods 
-
-###Types of Variables
-
-###Scope of Variable
 
 ### Variable Initialization
+- member/ static variables are always  initialized with default value
+- default value of numeric is 0, floating point is 0.0, char is '\u0000', object is null
+- local variables are not initialized
+- before initializing using local variable causes compiler error
+- assigning null is valid for reference variable  
+Example - 
+``` 
+
+```
 
 ### Wrapper Class
 ####Wrapper Class Utility Methods
