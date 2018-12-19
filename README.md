@@ -524,13 +524,77 @@ A constructor can invoke another constructor, or a super class constructor, but 
  - one interface can extend another interface 
  - class implementing multiple interface need to implement all the methods of all interface unless the class is an abstract class. 
  
-##### Method Overloading
+### Method Overloading
+ - multiple method with same name but having different parameter called overloaded method(in same class or subclass)
+ ```java
+     class Foo{
+        public void doIt(int number){}
+        public void doIt(String name){}
+     }
+ ```
+ - rules
+    - should have different arguments than the original method
+    - can have different return type 
+    - method cannot be overloaded just by changing the return type
+    - overloaded methods are treated as if they are different methods altogether 
+    - no restriction on access modifier or exception thrown
+    - based on type reference not based on the object it refers to
+### Method Overriding
+ - subclass method with same signature as that of a method in SuperClass is called Method overriding
+ ``` java 
+    public class Animal{
+        public String bark(){return "Don't know";}
+    }
+    class Cat extends Animal{
+        public String bark(){ return "meow meow";}
+    }
+ ```
+ - public method in subclass can only be declared as public. Keyword protected, private or default instead of public would result compilation error. So overriding method should be public in parent class. 
+ - overriding method cannot throw new Checked exception
+ - method declared as static or final cannot be override
+ - superclass method can be called by overriding super keyword
+ 
+##### Overriding & Polymorphism
+ - overriding method invocation is based on the object reference. It is not based on the Type of Reference variable. This is called polymorphism. 
+ ```java
+    class Animal{
+        public void bark(){System.out.println("Animal Bark");}
+    }
+    class Dog extends Animal{
+        public void bark(){System.out.println("Dog Bark");}
+    }
+    public class PolyMorphismExample{
+        public static void main(String[] args){
+          Animal[] animals = {new Dog(),new Animal()};
+          animals[0].bark(); // Dog bark
+          animals[1].bark(); // Animal bark
+        }
+    }
+``` 
+ - Covariant Returns
+   - A subclass is considered to be the same type as its superclass. So, in interfaces or abstract class, it is fine to provide implementations using the subclass type as return type. 
+ 
+### Class Modifiers
+ - Access modifiers
+   - public, (default), protected, private
+ - Non-access Modifiers
+   - strictfp, final, abstract 
+##### public class modifier
+ - valid to all other classes
+##### default class modifier
+ - valid inside package only 
+##### protected method access modifier 
+ - variable and methods can be accessed within same package Classes
+ - available  to Subclass in any package   
     
     
-    
-    
-    
-    
+### Final Modifier
+ - final class cannot be extended
+ - final method cannot be overriden
+ - final variable values cannot be changed
+ - final argument cannot be changed
+ - class cannot be both final and abstract
+ 
     
     
     
