@@ -595,6 +595,124 @@ A constructor can invoke another constructor, or a super class constructor, but 
  - final argument cannot be changed
  - class cannot be both final and abstract
  
+### Other Non access Modifier
+ - strictfp
+ - volatile -> written & read from main memory not store in cache
+ - native -> implemented in native language like C
+     
+    
+### Static Variables & Methods
+ - class level variables and methods
+ - only one copy of the static variable for the entire class
+ - each instance will not have a unique copy of static variable
+ - rules 
+   - static method can return static variable
+   - non static variable cannot be accessed inside static method
+   - static variable can be accessed inside static method
+   - both static and non static variable can be accessed inside instance method 
+   - instance variables and methods are only accessible through object reference
+   - static variables and methods are accessible through object reference and Class Name. Class Name is recommended. 
+   - inside static method 'this' keyword can be accessed 
+   - > static method cannot be overriden
+   - local variable cannot be declared as static 
+### Class Contents 
+ - A Java source file acn contain 
+   - 0 / 1 public class
+     - if class is public then rename the file name as the Class. No restrictions for non public class
+   - 0 / 1 / more non public class
+   - order of content of a file should be  
+     - package definitions
+     - imports
+     - class declarations
+### Nested Class
+ - classes inside one class
+ - types 
+   - Inner Class
+     - inner class cannot be initiated directly
+     - to create an inner class you need an instance of outer class
+       ``` 
+       OuterClass example = new OuterClass();
+       OuterClass.InnerClass innerClass = example.new InnerClass();
+       
+       ```
+     - public/private instance of outer class is available inside inner class
+     
+     
+   - Static Inner Class
+     - Static Nested Class can be created without creating parent 
+     - Static Nested class member are not static. They can have different values. 
+     - Outer class instance variable are not accessible
+     
+   - Method Inner Class
+     - can access class instance variable
+     - cannot access method's non final local variables
+     - method class can be instantiated only in this method
+     - cannot be accessible outside the method
+     
+     
+   
+   ```java
+   class OuterClass{
+       public class InnerClass{}
+       public static class StaticNestedClass{}
+       public void exampleMethod(){
+           class methodLocalInnerClass{}
+       }
+    }
+   ```     
+### Variable Argument
+ - allow calling a method with different number of parameters
+ - inside method a variable argument is similar to an array
+ - syntax > data type followed ...(three dot's)
+ - variable argument should be always the last parameter
+ - class can be also used as variable argument
+    
+### Exception Handling
+ 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
