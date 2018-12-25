@@ -16,24 +16,27 @@
     <session id="260645458">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="8" />
+          <entry key="project.closed" value="10" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.12" value="2" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.18" value="1" />
+          <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.25" value="1" />
           <entry key="project.open.time.4" value="2" />
           <entry key="project.open.time.42" value="1" />
           <entry key="project.open.time.47" value="1" />
+          <entry key="project.open.time.48" value="1" />
           <entry key="project.open.time.50" value="1" />
+          <entry key="project.open.time.53" value="1" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.60" value="1" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="19" />
+          <entry key="project.opened" value="22" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -58,15 +61,15 @@
         <counts>
           <entry key="gitignore" value="5" />
           <entry key="java" value="3300" />
-          <entry key="md" value="19177" />
-          <entry key="txt" value="119" />
+          <entry key="md" value="24276" />
+          <entry key="txt" value="187" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="3325" />
-          <entry key="Markdown" value="19152" />
-          <entry key="PLAIN_TEXT" value="124" />
+          <entry key="JAVA" value="3329" />
+          <entry key="Markdown" value="24247" />
+          <entry key="PLAIN_TEXT" value="192" />
         </counts>
       </usages-collector>
     </session>
@@ -77,14 +80,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="252">
-                <caret line="667" column="46" selection-start-line="667" selection-start-column="46" selection-end-line="667" selection-end-column="46" />
-                <folding>
-                  <element signature="e#63#64#0" expanded="true" />
-                  <element signature="e#113#114#0" expanded="true" />
-                  <element signature="e#135#136#0" expanded="true" />
-                  <element signature="e#185#186#0" expanded="true" />
-                </folding>
+              <first_editor relative-caret-position="481">
+                <caret line="833" column="19" selection-start-line="833" selection-start-column="19" selection-end-line="833" selection-end-column="19" />
               </first_editor>
               <second_editor />
             </state>
@@ -167,9 +164,9 @@
   <component name="PhpServers">
     <servers />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="width" value="1920" />
-    <option name="height" value="1080" />
+  <component name="ProjectFrameBounds" extendedState="4">
+    <option name="width" value="960" />
+    <option name="height" value="1053" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -177,12 +174,26 @@
       <autoscrollFromSource ProjectPane="true" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="CheatSheet" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CheatSheet" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544612303949" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545716152753" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -274,9 +285,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Test (1)" />
         <item itemvalue="Application.Test" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -310,7 +321,10 @@
       <workItem from="1545233816527" duration="3684000" />
       <workItem from="1545284148601" duration="1194000" />
       <workItem from="1545410597894" duration="372000" />
-      <workItem from="1545529632679" duration="4000000" />
+      <workItem from="1545529632679" duration="4399000" />
+      <workItem from="1545534804444" duration="63000" />
+      <workItem from="1545616696793" duration="8869000" />
+      <workItem from="1545702259210" duration="7275000" />
     </task>
     <task id="LOCAL-00001" summary=".gitignore file added">
       <created>1543927939550</created>
@@ -354,11 +368,18 @@
       <option name="project" value="LOCAL" />
       <updated>1545233696191</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="static variable &amp; method, inner class, variable argument.">
+      <created>1545533981861</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1545533981861</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71695000" />
+    <option name="totallyTimeSpent" value="88301000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -370,7 +391,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
+    <frame x="0" y="0" width="960" height="1053" extended-state="4" />
     <editor active="true" />
     <layout>
       <window_info id="Designer" order="0" />
@@ -378,12 +399,12 @@
       <window_info id="UI Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Capture Tool" order="4" />
-      <window_info content_ui="combo" id="Project" order="5" weight="0.12646745" />
+      <window_info content_ui="combo" id="Project" order="5" weight="0.4085648" />
       <window_info id="Learn" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3286334" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39891893" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32903227" />
@@ -418,7 +439,8 @@
     <MESSAGE value="file rename." />
     <MESSAGE value="assignment operator, variable initialization" />
     <MESSAGE value="access modifier" />
-    <option name="LAST_COMMIT_MESSAGE" value="access modifier" />
+    <MESSAGE value="static variable &amp; method, inner class, variable argument." />
+    <option name="LAST_COMMIT_MESSAGE" value="static variable &amp; method, inner class, variable argument." />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar:///usr/lib/jvm/default-java/jre/lib/rt.jar!/java/util/Iterator.class" />
@@ -448,14 +470,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="252">
-            <caret line="667" column="46" selection-start-line="667" selection-start-column="46" selection-end-line="667" selection-end-column="46" />
-            <folding>
-              <element signature="e#63#64#0" expanded="true" />
-              <element signature="e#113#114#0" expanded="true" />
-              <element signature="e#135#136#0" expanded="true" />
-              <element signature="e#185#186#0" expanded="true" />
-            </folding>
+          <first_editor relative-caret-position="481">
+            <caret line="833" column="19" selection-start-line="833" selection-start-column="19" selection-end-line="833" selection-end-column="19" />
           </first_editor>
           <second_editor />
         </state>

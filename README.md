@@ -668,8 +668,175 @@ A constructor can invoke another constructor, or a super class constructor, but 
  - class can be also used as variable argument
     
 ### Exception Handling
- 
+ - exception propagate from method to method if there is no exception handling
+ - if exception happens then none of the lines after the exception are execute.
+ - connection close, file close etc. should be in finally block
+ - > finally is executed even if there is a return statement in catch or try block
+ - try without catch allowed
+ - try without both catch & finally not allowed
+##### Exception Handling Hierarchy
+ - Throwable is the highest level of Error Handling
+ ``` 
+ //predefined JAVA Classes
+ class Error extends Throwable{} // ex: StackOverFlowError
+ class Exception extends Throwable{} //when programmer can handle
+ class RuntimeException extends Exception{}
+ ```
+ - main class can handle exception instead of declaring throws
+ - custom exception class
+ - Extended RuntimeException
+ - multiple catch block possible
+ - catch block handles only specified exceptions
+ - best practice is to print the StackTrace
+
+### Console 
+ ```
+    Console console = System.console();
+    String text = console.readLine();
+    char[] password = console.readPassword();
+ ``` 
+### Format or Printf
+ - same as C/C++
+### String Buffer & String Builder
+ - when value of string changes frequently
+ - String Buffer is thread Safe
+ - String Builder is NOT Thread safe
+ ``` 
+    StringBuffer stringBuffer = new StringBuffer("12345");
+    stringBuffer.append("6789");
+    System.out.println(stringBuffer);
+    // all StringBuffer methods modify the value of the object
+ ```  
+ ``` 
+    StringBuilder sb = new StringBuilder("0123456789");
+    System.out.println(sb.delete(3,7));//012789
+    System.out.println(sb.insert(3,"ABCD"));
+    System.out.println(sb.reverse());
     
+ ```
+ - in StringBuilder chaining is possible
+### Date
+ - no longer recommended
+ - most of the method works with millis since 1st Jan 1970
+ ``` 
+    Date now = new Date();
+    System.out.println(now.getTime());
+    
+    
+    Date date = new Date();
+    //increase time by 6 hours
+    
+    date.setTime(date.getTime() + 6* 60 * 60 * 1000;
+    
+    //to decrease - 
+    
+    
+ ```
+##### Date Formatting
+ ``` 
+    System.out.println(DateFormat.getInstance(DateFormat.FULL).format(date));
+ ```
+ #### Calendar
+  - Easy way to manipulate dates in java which provide lot of details related to a date
+  - created by Calendar.getInstance() method call. 
+  ``` 
+    Calendar calendar = Calendar.getInstance();
+    calendar.set(Calendar.DATE, 24);
+    calendar.set(Calendar.MONTH, 8);// sept
+    calendar.set(Calendar.YEAR, 2010);
+    
+    //modify date
+    calendar.add(Calendar.DATE, 5);
+    //roll method change the value being modified
+    calendar.roll(Calendar.MONTH, 5); 
+    
+    Calendar gregorianCalendar = new GregorianCalendar(2011,7,15);
+    System.out.println(DateFormat.getInstance().format(calendar.getTime());
+  ```
+### Number Format 
+ - using default
+ - using locale
+ - format currency using locale   
+ - parsing using NumberFormat
+ ``` 
+    NumberFormat numberFormat = NumberFormat.getInstance();
+    numberFormat.setParseIntegerOnly(true);
+    System.out.println(numberFormat.parse("9875.234");
+    
+ ```
+### Collection Interfaces
+ - arrays are not dynamic so collection comes here
+ - most important method in Collection interface is add and remove. size() method returns the number of elements in the collection. 
+##### List Interface - extends collection interface
+ - elements sequentially, can be inserted at any position, can  be accessed through position
+
+##### Map Interface - doesn't extend collection interface
+ - key value pair
+ - put(), get(), size(), isEmpty(),containsKey(),containsValue(), remove(), equals
+###### HashMap
+ - get(), put()
+###### TreeMap
+- get(), put()
+
+##### Set Interface - extends Collection interface 
+ - cannot contain duplicate
+###### HashSet
+ - no ordering 
+###### LinkedHashSet
+- maintains insertion order
+###### TreeSet
+- sorted order
+- pollFirst(), pollLast(),
+
+
+##### SortedSet Interface - extends Set interface
+ - maintains element in sorted order
+ - headSet(), tailSet(), subSet(), first(), last()
+
+##### SortedMap Interface - extends Map interface
+ - maintains key in a sorted order
+ 
+
+##### Queue Interface - extends Collection
+
+##### Iterator Interface
+ - hasNext() check if another element in Collection being iterated
+ 
+
+### Collections
+ - only hold objects not primitives 
+
+##### ArrayList
+ - implements list interface
+ - indexOf() 
+ - remove()
+ - Collections.sort(list)
+   - to sort collection of object Comparator interface need to be implemented
+ - toArray()
+ - asList() // array to list
+ 
+
+##### Vector
+ - same as ArrayList however all methods in Vector are synchronized. If share a list between two threads
+
+##### LinkedList
+ - extends List & Queue. same operation as arraylist but implementation different. 
+
+##### Priority Queue
+ - smaller number higher priority
+ - peek(), poll(), 
+ - comparator 
+ 
+##### Collection static methods 
+ - binarySearch()
+ - reverse()
+ - sort();
+ - reverseOrder(); 
+
+### Generics
+
+
+ 
     
     
     
