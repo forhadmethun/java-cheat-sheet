@@ -953,9 +953,92 @@ A constructor can invoke another constructor, or a super class constructor, but 
  ```
     
 ### Serialization
+- helps to save and retrieve the state of an object 
+- Serialize -> convert object state to some internal object representation. ObjectOutputStream.writeObject() -> write to file
+- De-Serialize -> reverse of Serialize. ObjectInputStream.readObject() - read from file
+- to serialize an object it should implement Serializable interface. 
+``` 
+    class Rectangle implements Serializable{
+        public Rectangle(int length, int breadth){
+            this.length = length;
+            this.breadth = breadth; 
+        }
+        int length, breadth, area; 
+    
+    }
+    //serializing object to a file
+    FileOutputStream fileStream = new FileOutputStream("Rect.ser");
+    ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);
+    objectStream.writeObject(new Rectangle(5,6));
+    objectStream.close();
+    
+    //deserialize from a serialized file 
+    FileInputStream fileInputStream = new FileInputStream("Rect.ser");
+    ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+    Rectangle  rectangele = (Rectangle) objectInputStream.readObject(); 
+    objectInputStream.close(); 
+    //rectangle gets length = 5 & breadth = 6; 
+    
+    // area can be calculated when necessary so there is no need to store it
+    // we can declare the variable as-> transient int area; 
+    
+```
+ - if object inside serializable class isn't 
+ - static variable are not part of object so they aren't serialize
+   - make inside variable transient 
+   - or, inside variable class implements serializable 
+
 
 
 ### Thread
+ - allow java code to run in parallel
+ 
+##### Need for Threads
+ - Cricket Statistics Application 
+    - step 1: download & store bowling stat   -> 60 mints
+    - step 2: download and store batting stat -> 15 mints
+    - step 3: download and store field stat   -> 25 mints
+    > if we run those individual tasks sequentially it will take 100 mints. 
+    > if parallel then it will take 60 mints max!! 
+##### Creating Thread 
+- Extending Thread Class
+
+- Implementing Runnable Interface 
+
+ ``` 
+    class BattingStatisticsThread extends Thread{}
+    
+    class BowlingStatisticsThread implements Runnable{public void run(){}}
+    
+    
+    // declaration
+    
+    BattingStatisticsThread battingThread = new BattingStatisticsThread();
+    battingThread.start();
+    
+    BowlingStatisticsThread bowlingThreadImpl = new BowlingStatisticsThread();
+    Thread bowlingThread = new Thread(bowlingThreadImpl); 
+    bowlingThread.start(); 
+    
+ ```
+##### Thread Synchronization
+ - as thread run in parallel, a new problem arises
+ - if thread1 modifies data while is being accessed by thread2?
+ - how to ensure that different thread don't leave the system in an inconsistent state? 
+ 1
+
+##### States of Thread
+
+##### Thread Priority 
+
+##### Thread Join
+
+##### Thread & Deadlocks
+
+##### Thread - wait, notify, notifyAll
+
+
+
  
     
     
