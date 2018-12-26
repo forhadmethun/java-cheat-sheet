@@ -834,8 +834,128 @@ A constructor can invoke another constructor, or a super class constructor, but 
  - reverseOrder(); 
 
 ### Generics
+ - used to create generic classes and generic methods which can work with different types(Classes)
+ ``` 
+    class MyList{
+        private List<String> values;
+        void add(String value){values.add(value);}
+        void remove(String value){values.remove(value);}
+    }
+    
+    //--------------------- with generics ---------------
+    
+    class MyListGeneric<T>{
+        private List<T> values;
+        void add(T value){values.add(value);}
+        void remove(T value){values.remove(value);}
+    }
+ ```
+ - type can be restricted 
+  ``` 
+    class MyListRestricted<T extends Number>{}
+  ```
+##### Generic Method
+ - generic type can be declared as part of method declaration. the generic type can be used anywhere in the method(return type, parameter type, local or block variable type)
+ ``` 
+    static<X extends Number> X doSomthing(X number){}
+ ```
+ ``` 
+    static void doSomethingListMethod(List<? extends 
+    Animal> animals){
+    // adding element inti a list declared with ? is prohibited
+    //animals.add(new Animal());//compile error
+    }
+    
+    
+    static void doSomethingMethod(List<? super Dog> animals){}
+    
+ ```
+ 
+### File 
+##### creation
+ ``` 
+ File file = new File("fileName.txt");// create file
+ System.out.println(file.exists());//check if file exists 
+ System.out.println(file.createNewFile());//if file doesn't exist then creates it and return true. if exists return false
+ //file.getAbsolutePath();
+ //file.isFile();
+ //file.isDirectory();
+ 
+ //file.renameTo(newName.txt);
+ 
+ File directory = new File("src/com/forhad");
+ directory.mkdir();
+ //directory.isDirectory(); // true
+ 
+ File fileDir = new File(directory, "newfile.txt");
+ fileDir.createNewFile(); // creates file
+ 
+ ```
+##### Read & write from a file 
+ - Implementation of Reader and Writer abstract classes help us to read and write content of files. 
+ - Writer methods - flush, close, append(text)
+ - Reader methods - read, close(NO FLUSH)
+ 
+ - Writer Implementation 
+   - FileWriter, BufferedWriter, PrintWriter
+ - Reader Implementation 
+   - FileReader, BufferedReader
+   
+ ``` 
+    FileWriter fileWriter = new FileWriter(file);
+    fileWriter.write("How are you doing? -Joe");
+    //Always flush before close. Writing to file uses Buffering
+    fileWriter.flush();
+    fileWriter.close();
+    
+    FileWriter fileWriter2 = new FileWriter("fileName.txt"); // if not exists then creates it 
+ ```
+ 
+ ``` 
+    FileReader fileReader = new FileReader(file);// file or fileName
+    char[] temp = new char[255];
+    //fileReader.read(temp);  - reades entire file and store in temp, returns # of characters of the file
+    //Arrays.toString(temp); - [H, o , w ...]
+    fileReader.close();
+    
+ ```
+ - BufferedWriter and BufferedReader provide better buffering in addition to basic file writing and reading operations. 
+   - Instead of reading the whole file we can read a file line by line
+ ``` 
+    FileWriter fileWriter3 = new FileWriter("bufferedFile.txt");
+    BufferedWriter bufferedWriter = new BufferedWriter(fileWriter3);
+    
+    bufferedWriter.write("hey, how are you?");
+    bufferedWriter.newLine();
+    
+    bufferedWriter.flush();
+    bufferedWriter.close();
+    fileWriter3.close();
+    
+ ```
+ ``` 
+    FileReader fileReader3 = new FileReader("BufferedFileName.txt");
+    BufferedReader bufferedReader = new BufferedReader(fileReader3);
+    
+    String line;
+    while((line=bufferedReader.readLine())!=null){System.out.println(line);};
+    
+ ```
+ - PrintWriter provides advanced methods to write formatted text to the file. It support printf function 
+ ``` 
+    PrintWriter printWriter = new PrintWriter("hello.txt");
+    printWriter.format("%15s", "Wthat is my name?");
+    printWriter.println();
+    printWrtier.printf("Formatted Number: %5.5f", 4.5);
+    printWriter.flush();
+    printWriter.close();
+    
+ ```
+    
+### Serialization
 
 
+### Thread
  
     
     
