@@ -1025,7 +1025,6 @@ A constructor can invoke another constructor, or a super class constructor, but 
  - as thread run in parallel, a new problem arises
  - if thread1 modifies data while is being accessed by thread2?
  - how to ensure that different thread don't leave the system in an inconsistent state? 
- 1
 
 ##### States of Thread
 
@@ -1035,21 +1034,208 @@ A constructor can invoke another constructor, or a super class constructor, but 
 
 ##### Thread & Deadlocks
 
-##### Thread - wait, notify, notifyAll
+##### Thread - wait, notify, 
 
 
 
+# JAVA 8
+### stream 
+
+--- 
+
+- data can be processed in declarative way like sql 
+- process data declaratively and leverage multicore architecture without the need to write any specific code for it. 
+- stream represents a sequence of objects from a source, which supports aggregate operations.  characteristics - 
+  - sequence of elements
+    - sequence of elements  of specific type in a sequencial manner. stream gets/computes elements on demand. never stores the elements
+  - source
+    - stream takes Collections, Arrays or I/O resources as input source
+  - aggregate operations 
+    - filter, map, limit, reduce, find, match & so on. 
+  - pipelining
+    - most stream operations return stream itself so that thier result can be pipelined. 
+    - these operations are called intermediate operations and their function is to take input, process, and return output to the target. 
+    - collect() method is a terminal operation which is normally present at the end of pipelining operation to mark end of the stream
+  - atomic iterations 
+    - in Collection iterator needed but stream operations do the iterations internally over the source elements provided 
+    
+##### Generating Streams
+- two ways to generate stream
+  - stream() - returns sequential stream 
+  - parallelStream() - returns parallel stream
+
+##### filter  
+```
+    List<String> strings = Arrays.asList("abc","","bc","efg","abcd","","jkl");
+    List<String> filtered =  strings.stream()
+                                    .filter(string -> !string.isEmpty())
+                                    .collect(Collectors.toList()); 
+    int count = strings.stream()
+                        .filter(string -> string.isEmpty())
+                        .count();                                     
+
+```
+##### forEach
+    
+```
+  Random random = new Random();
+  random.ints.limit(10).forEach(System.out::println);  
+```    
+##### map
+
+``` 
+  List<Integer> numbers = Arrays.asList(3,2,3,34,51,123);
+  List<Integer> squareList  =  numbers.stream()
+                                      .map(i -> i*i)
+                                      .distinct()
+                                      .collect(Collectors.toList());
+```    
+##### sorted
+``` 
+    random.ints.limit(10).sorted().forEach(System.out::println);
+    
+```
+##### Reduction 
+ - reduce a sequence of elements to some value according to specified function with the help of the reduce() method of the type stream. This method takes two parameters; first start value, second - an accumulator function
+ ``` 
+    List<Integer> intergers = Arrays.asList(1,1,1);
+    Integer reduced = integers.stream()
+                                .reduce(23, (a,b)-> a+b);
+                                 //23 + 1 + 1 + 1 = 26
+ ```
+ ##### Matching 
+ - validate elements of a sequence according to some predicate. 
+ - anyMatch(), allMatch(), noneMatch()
+ ``` 
+ boolean isValid = list.stream().anyMatch(element -> element.contains("h")); // true
+ boolean isValidOne = list.stream().allMatch(element -> element.contains("h")); // false
+ boolean isValidTwo = list.stream().noneMatch(element -> element.contains("h")); // false
+
+ ```
+
+
+##### Parallel Processing
+```
+    int count = strings.parallelStream().filter(string -> string.isEmpty()).count();
+```
+    
+##### Collectors 
+ - used to combine the result of processing on the elements of a stream
+```
+List<String>strings = Arrays.asList("abc", "", "bc", "efg", "abcd","", "jkl");
+List<String> filtered = strings.stream().filter(string -> !string.isEmpty()).collect(Collectors.toList());
+
+System.out.println("Filtered List: " + filtered);
+String mergedString = strings.stream().filter(string -> !string.isEmpty()).collect(Collectors.joining(", "));
+System.out.println("Merged String: " + mergedString);
+```
+##### Statistics
+    
+    
+### New Features in Java 8
+ - interface can have methods with static & default keyword
+ ``` 
+    interface Formula{
+        double calculate(int a);
+        default double square(int a){
+            return Math.sqrt(a);
+        }
+    
+    }
+    Formula formula = new Formula(){
+        @Override
+        public double calculate(int a){
+            return sqrt(a * 100);
+        }
+    
+    }
+    formula.calculate(100); //100.0
+    formula.sqrt(16); // 4.0
  
+ 
+ ```
+ 
+ 
+ 
+##### Method References
+ - shorter and more readable for lamda expression. 4 variants 
+    - > ContainigClass::methodName
+        ``` 
+          //1
+          boolean isReal = list.stream().anyMatch(u-> User.isRealUser(u));
+          //can be replaced by 
+          //2
+          User user = new User();
+          list.stream.anyMatch(user::isrealUser);
+          //3
+          list.stream.filter(String::isEmpty).count();
+          //4
+          Stream<User> stream = list.stream().map(User::new);
+          
+          
+          
+        ```
+        
+##### Operational <T>       
+  - better support for handling null 
+### Lamda Expression
+ - instead of creating anonymous objects all the day long, Java 8 comes with shorter syntax 
+ ``` 
+ List<String> names = Array.asList{"peter","anna","mike","xenia"};
+ Collections.sort(names, new Comparator<String>(){
+    @Override
+    public int compare(String a, String b){
+        return b.compareTo(a);
+    }
+ 
+ });
+ // This code can be shorted in the following way in Java 8- 
+ 
+ Collections.sort(names, (a,b) -> b.compareTo(a));
+ ```    
     
+### Lamda Expression best practices 
+ - avoid block of code in lamda's body
+ ``` 
+    Foo foo = parameter -> buildString(parameter);
+    private String buildString(String parameter){
+        String result = "Something " + parameter; 
+        //many lines of code
+        return result; 
     
+    }
+    //instead of 
     
+    Foo foo = parameter -> {
+        String result = "Something " + parameter; 
+        //many lines of code
+        retrun result; 
+    }
+ ``` 
+ - avoid specifying parameter type
+ ``` 
+    (a,b) -> a.toLowerCase() + b.toLowerCase();
     
+    //instead of 
+    (String a,String b) -> a.toLowerCase() + b.toLowerCase(); 
+ ```   
+ - avoid parentheses around single parameter
+ - use method reference
+ ``` 
+    String::toLowerCase();
+    //instead of 
+    a->a.toLowerCase();
+ ```
+ - 'Effective final'. Accessing non-final variable inside lamda expression will cause the compiler-error. 
     
-    
-    
-    
-    
-    
+### Map in java 8 
+- few methods
+  - putIfAbsent()
+  - forEach()
+  - computeIfPresent()
+  - computeIfAbsent()
+  - remove()
+  - merge()    
     
     
     
