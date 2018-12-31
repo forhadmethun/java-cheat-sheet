@@ -1025,16 +1025,94 @@ A constructor can invoke another constructor, or a super class constructor, but 
  - as thread run in parallel, a new problem arises
  - if thread1 modifies data while is being accessed by thread2?
  - how to ensure that different thread don't leave the system in an inconsistent state? 
+ - use synchronized keyword at the starting of method
+ - method or part of method can be marked as synchronized. JVM will ensure that only thread running the synchronized part of code at any time. 
+   - there would be performance issue as other thread will wait for the synchronized block to be finished. So as little code as possible should be marked as synchronized. 
+   ``` 
+      synchronized void synchronizedMethod{
+        //code goes here
+      }
+   
+   ```
+   
+   ``` 
+      void synchronizedBlock(){
+        synchronized(this){
+        
+        
+        }
+      }
+   ```
+   ``` 
+      static int getCount(){
+        synchronized(SynchronizedSyntaxExample.class){
+            return count;
+        }
+      
+      }
+   
+   ```
+   ``` 
+      synchronized static int getCount(){
+        return count;
+      }
+   
+   ```
 
 ##### States of Thread
+  - new ( when new object created but start method yet to call)
+  - runnable( when eligible to run but not running, scheduler selects which to move  )
+  - running
+  - blocked/waiting (synchronized block)
+  - terminated/dead (when execution completed)
 
 ##### Thread Priority 
+  - scheduler can be requested to allot more CPU to a thread by increasing thread priority. 
+  - default 5 can be increased 1 to 10. 
+  - if two threads are waiting then the scheduler picks the thread with the highest priority. 
+  ``` 
+      ThreadExample thread1 = new ThreadExample();
+      thread1.setPriority(8); 
+      // MAX_PRIORITY
+      // MIN_PRIORITY
+      // NORM_PRIORITY
+  ```
 
 ##### Thread Join
+  - if join method called on a thread then main method stops until that thread execution finished. 
+  ``` 
+    thread.join(2000);// main method will wait for 2s for that thread
+  ```
+##### Thread Static methods
+  - yield 
+    - a call to yield method changes the state of thread from RUNNING to RUNNABLE however the scheduler can immediately put the thread back to RUNNING state. 
+  - sleep
+    - sleep thread fro specified number of milliseconds  
 
 ##### Thread & Deadlocks
+  - thread 1 is waiting for thread 2 & at the same time thread 2 is waiting for thread 1. 
+  - both threads would wait for one another forever.
+  
 
-##### Thread - wait, notify, 
+##### Thread - wait, notify
+  - if different threads work for  a long time then main method will finish execution before getting result from those threads. 
+  - in this scenario wait and notify method can be used in synchronized context. 
+  
+  ``` 
+      //inside thread run
+      public void run(){
+        synchronized(this){
+            calculateUptoTenMillion();
+            notify();
+        }
+      }
+      
+      //inside main
+      thread.start();
+      thread.wait();
+      
+  ```
+  - if more than one thread is waiting then use notifyAll() method.
 
 
 
@@ -1047,7 +1125,7 @@ A constructor can invoke another constructor, or a super class constructor, but 
 - process data declaratively and leverage multicore architecture without the need to write any specific code for it. 
 - stream represents a sequence of objects from a source, which supports aggregate operations.  characteristics - 
   - sequence of elements
-    - sequence of elements  of specific type in a sequencial manner. stream gets/computes elements on demand. never stores the elements
+    - sequence of elements  of specific type in a sequential manner. stream gets/computes elements on demand. never stores the elements
   - source
     - stream takes Collections, Arrays or I/O resources as input source
   - aggregate operations 
