@@ -1021,9 +1021,36 @@ A constructor can invoke another constructor, or a super class constructor, but 
     bowlingThread.start(); 
     
  ```
+ - java.uti.concurrent.ExecutorService
+ ``` 
+    ExecutorService newExecutorService = ExecutorService.newSingleThreadExecutor();
+    
+    newExecutorService.execute(new Runnable(){
+        public void run(){
+        
+        }
+    });
+    newExecutorService.shutdown();
+    
+    //ExecutorService es1 = Executors.newFixedThreadPool(10);
+    //ExecutorService es2 = Executors.newScheduledThreadPool(10);
+    
+ ```
+   - Check if executor service task executed successfully
+     - Future class
+     - new Callable
+     ``` 
+        Future futureFromCallable = executorService1.submit(new Callable(){
+            public String call() throws Exception{
+                return "RESULT";
+            }
+        });
+        System.out.println("returned from thread: " + futureFromCallable.get());
+     
+     ```
 ##### Thread Synchronization
  - as thread run in parallel, a new problem arises
- - if thread1 modifies data while is being accessed by thread2?
+ - if thread1 modifies data while is being accessed by thread2 which leaves an inconsistent state?
  - how to ensure that different thread don't leave the system in an inconsistent state? 
  - use synchronized keyword at the starting of method
  - method or part of method can be marked as synchronized. JVM will ensure that only thread running the synchronized part of code at any time. 
@@ -1034,7 +1061,7 @@ A constructor can invoke another constructor, or a super class constructor, but 
       }
    
    ```
-   
+   - if block of code needs to be synchronized then synchronized block can be used like this
    ``` 
       void synchronizedBlock(){
         synchronized(this){
@@ -1079,18 +1106,20 @@ A constructor can invoke another constructor, or a super class constructor, but 
   ```
 
 ##### Thread Join
-  - if join method called on a thread then main method stops until that thread execution finished. 
+  - if join method called on a thread to complete execution , then main method stops until that thread execution finished. 
   ``` 
     thread.join(2000);// main method will wait for 2s for that thread
   ```
 ##### Thread Static methods
   - yield 
+    - i have enough time, let another thread to run for few time
     - a call to yield method changes the state of thread from RUNNING to RUNNABLE however the scheduler can immediately put the thread back to RUNNING state. 
   - sleep
-    - sleep thread fro specified number of milliseconds  
+    - sleep thread from specified number of milliseconds  
 
 ##### Thread & Deadlocks
-  - thread 1 is waiting for thread 2 & at the same time thread 2 is waiting for thread 1. 
+  - thread 1 is waiting for thread 2 & at the same time thread 2 is waiting for thread 1.
+  - bigger cycle may 1 -> 2 -> 3 -> 1 
   - both threads would wait for one another forever.
   
 
@@ -1113,6 +1142,7 @@ A constructor can invoke another constructor, or a super class constructor, but 
       
   ```
   - if more than one thread is waiting then use notifyAll() method.
+  - wait() methods wait until another thread notify
 
 
 
