@@ -772,19 +772,32 @@ A constructor can invoke another constructor, or a super class constructor, but 
 
 ##### Map Interface - doesn't extend collection interface
  - key value pair
- - put(), get(), size(), isEmpty(),containsKey(),containsValue(), remove(), equals
-###### HashMap
+ - put(), get(), size(), isEmpty(),containsKey(),containsValue(), remove(), equals, keySet(), values()
+ 
+##### SortedMap Interface - extends Map interface
+ - maintains key in a sorted order
+ - subMap(), headMap(), tailMap(), firstKey(), lastKey()
+##### NavigableMap interface extends SortedMap
+ - lowerKey(), higherKey(), floorKey()
+  
+###### HashMap class
  - get(), put()
-###### TreeMap
+ - no ordering
+##### LinkedHashMap class
+ - insertion order maintained 
+
+##### Hashtable class
+ - synchronized 
+###### TreeMap class
 - get(), put()
 
 ##### Set Interface - extends Collection interface 
  - cannot contain duplicate
-###### HashSet
+###### HashSet Class
  - no ordering 
-###### LinkedHashSet
+###### LinkedHashSet Class
 - maintains insertion order
-###### TreeSet
+###### TreeSet Class
 - sorted order
 - pollFirst(), pollLast(),
 
@@ -793,18 +806,34 @@ A constructor can invoke another constructor, or a super class constructor, but 
  - maintains element in sorted order
  - headSet(), tailSet(), subSet(), first(), last()
 
-##### SortedMap Interface - extends Map interface
- - maintains key in a sorted order
- 
+##### NavigableSet Interface extends Set interface
+
+
 
 ##### Queue Interface - extends Collection
+
+##### Deque
+ - double ended queue
+ - addFirst(), offerFirst(), removeFirst(), pollFirst()
+
+##### BlockingQueue 
+ - queue with wait feature
+ - wait until an element is available
+
+##### ArrayDeque
+
+##### ArrayBlockingQueue
+
+##### LinkedBlockingQueue
+ - performance better than array blocking queue  
 
 ##### Iterator Interface
  - hasNext() check if another element in Collection being iterated
  
 
-### Collections
+### Collection
  - only hold objects not primitives 
+ - list.add(3); // autoboxing happens here list.add(new Integer(3));
 
 ##### ArrayList
  - implements list interface
@@ -823,14 +852,16 @@ A constructor can invoke another constructor, or a super class constructor, but 
  - extends List & Queue. same operation as arraylist but implementation different. 
 
 ##### Priority Queue
- - smaller number higher priority
+ - smaller number higher priority, sorted in natural order
  - peek(), poll(), 
  - comparator 
  
-##### Collection static methods 
+##### Collections static methods 
+ - Collection is interface where Collections is a class with few statics method
  - binarySearch()
  - reverse()
  - sort();
+   - Comparable interface need to be implemented or Comparator interface need to be implemented
  - reverseOrder(); 
 
 ### Generics
