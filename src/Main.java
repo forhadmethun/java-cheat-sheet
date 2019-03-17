@@ -33,6 +33,15 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Hello World!");
         String str = new String();
+        Integer x = Integer.valueOf(1);
+        int p = x.intValue();
+        System.out.println(p);
+        String firstString = new String("first " ) ;
+        StringBuffer sb = new StringBuffer();
+        firstString = "second";
+
+
+
     }
 //    Queue q;
 //    ArrayList a;
